@@ -5,6 +5,9 @@ Version: 3.0
 
 http://www.editeur.org/12/About-Release-3.0/
 
+# Badges
+[![Python 3](https://pyup.io/repos/github/scieloorg/onix/python-3-shield.svg)](https://pyup.io/repos/github/scieloorg/onix/)
+
 
 # Requirements
 
