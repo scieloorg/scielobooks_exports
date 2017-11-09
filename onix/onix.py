@@ -361,7 +361,7 @@ def json2xml(host, port, sbidlist, website):
 
             resourcelink = Element('ResourceLink')
             resourcelink.text = (
-                'http://books.scielo.org/id/%s/cover/cover.jpeg' % (sbid))
+                'http://%s/id/%s/cover/cover.jpeg' % (website, sbid))
             resourceversion.append(resourcelink)
 
             # SupportingResource2
@@ -388,7 +388,7 @@ def json2xml(host, port, sbidlist, website):
             resourceversion.append(resourceform)
 
             resourcelink = Element('ResourceLink')
-            resourcelink.text = ('http://books.scielo.org/id/%s' % (sbid))
+            resourcelink.text = ('http://%s/id/%s' % (website, sbid))
             resourceversion.append(resourcelink)
 
             # Block 4
@@ -577,10 +577,10 @@ def main():
     xmlfolder = config['paths']['xmlfoldername']
     xmlfileout = config['paths']['xmlout']
 
-    host = config['couchdb-books']['url']
+    host = config['couchdb-books']['host']
     port = config['couchdb-books']['port']
 
-    website = config['books.scielo']['url']
+    website = config['books.scielo']['host']
 
     # Receive sbid list file
     f = open(sbidlistfile, 'r')
