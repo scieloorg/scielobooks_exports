@@ -11,6 +11,6 @@ http://www.editeur.org/12/About-Release-3.0/
 
 # Requirements
 
-- lxml==4.1.0
+- lxml==4.1.1
 - iso-639==0.4.5
 - requests==2.18.4
