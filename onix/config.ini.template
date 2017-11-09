@@ -1,12 +1,25 @@
 [paths]
-sbidlistname: File name of list of sbid for generate XMLs
-xmlfoldername: Folder name for xml file output
-xmlfilename: XML file name output
-xmlout: Concatenate folder and file - DO NOT CHANGE
+# File name of list of sbid for generate XMLs
+sbidlistname = 
+
+# Folder name for xml file output
+xmlfoldername = 
+
+# XML file name output
+xmlfilename = 
+
+# Concatenate folder and file - DO NOT CHANGE
+xmlout = ${paths:xmlfoldername}/${paths:xmlfilename}
+
 
 [books.scielo]
-url = URL of SciELO Books website
+# URL of SciELO Books website
+url = 
+
 
 [couchdb-books]
-url = URL of CouchDB service
-port = port number of service
+# URL of CouchDB service
+url = 
+
+# port number of service
+port =  
