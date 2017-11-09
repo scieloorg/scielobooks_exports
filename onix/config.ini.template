@@ -13,13 +13,13 @@ xmlout = ${paths:xmlfoldername}/${paths:xmlfilename}
 
 
 [books.scielo]
-# URL of SciELO Books website
-url = 
+# Host of SciELO Books website
+host = books.scielo.org
 
 
 [couchdb-books]
-# URL of CouchDB service
-url = 
+# Host of CouchDB service
+host = 
 
 # port number of service
 port =  
