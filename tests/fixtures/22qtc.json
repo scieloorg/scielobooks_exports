@@ -1,0 +1,237 @@
+{
+    "_id": "22qtc",
+    "_rev": "66-d7a29db0113b2735142f97300124c4b0",
+    "isbn": "9788523205249",
+    "pdf_file": 
+    {
+        "uid": "NSMJO86MUH",
+        "filename": "9788523208899.pdf"
+    },
+    "is_comercial": false,
+    "creation_date": "2012-03-08 11:48:45.379734",
+    "visible": true,
+    "primary_descriptor": "COMPUTERS / Information Technology",
+    "year": "2008",
+    "bisac_code": 
+    [
+        
+        [
+            
+            [
+                "code",
+                "COM032000"
+            ]
+        ]
+    ],
+    "price_dollar": "0.00",
+    "city": "Salvador",
+    "epub_file": 
+    {
+        "uid": "0HGV02IN1Y",
+        "filename": "9788523208899.epub"
+    },
+    "title": "Além das redes de colaboração: internet, diversidade cultural e tecnologias do poder",
+    "eisbn": "9788523208899",
+    "publisher_url": "http://www.edufba.ufba.br/2011/12/alem-das-redes-de-colaboracao-internet-diversidade-cultural-e-tecnologias-do-poder/",
+    "translated_titles": [],
+    "format": 
+    [
+        
+        [
+            "height",
+            null
+        ],
+        
+        [
+            "width",
+            null
+        ]
+    ],
+    "translated_synopses": [],
+    "collection": 
+    [
+        
+        [
+            "individual_author",
+            null
+        ],
+        
+        [
+            "corporate_author",
+            null
+        ],
+        
+        [
+            "title",
+            null
+        ],
+        
+        [
+            "english_translated_title",
+            null
+        ],
+        
+        [
+            "total_number_of_volumes",
+            null
+        ]
+    ],
+    "serie": 
+    [
+        
+        [
+            "title",
+            null
+        ],
+        
+        [
+            "issue",
+            null
+        ],
+        
+        [
+            "issue_number",
+            null
+        ],
+        
+        [
+            "issn",
+            null
+        ]
+    ],
+    "doi_number": "http://dx.doi.org/10.7476/9788523208899",
+    "use_licence": "CC BY-NC-SA 3.0",
+    "pages": "232",
+    "shopping_info": [],
+    "translated_primary_descriptors": [],
+    "publisher": "EDUFBA",
+    "language": "pt",
+    "cover_thumbnail": 
+    {
+        "uid": "",
+        "filename": "9788523208899.jpg.thumb.jpeg"
+    },
+    "country": "BR",
+    "cover": 
+    {
+        "uid": "5511SETIGW",
+        "filename": "9788523208899.jpg"
+    },
+    "price_reais": "0.00",
+    "synopsis": "Discute o aprisionamento das subjetividades, os riscos e exageros do controle do conhecimento e da informática de dominação. Alerta para o fato de que a tentativa de ampliação do compartilhamento é combatida tanto pela expansão da propriedade sobre a cultura quanto pela ideologia da neutralidade tecnológica. Mostra a contradição entre as possibilidades de criação e disseminação cultural inerentes às redes informacionais e as tentativas de manter a interatividade sob o controle do capitalismo industrial.",
+    "creators": 
+    [
+        
+        [
+            
+            [
+                "role",
+                "organizer"
+            ],
+            
+            [
+                "full_name",
+                "Pretto, Nelson De Luca"
+            ],
+            
+            [
+                "link_resume",
+                "http://lattes.cnpq.br/1504621070252946"
+            ]
+        ],
+        
+        [
+            
+            [
+                "role",
+                "organizer"
+            ],
+            
+            [
+                "full_name",
+                "Silveira, Sérgio Amadeu da"
+            ],
+            
+            [
+                "link_resume",
+                "http://lattes.cnpq.br/6800442072685268"
+            ]
+        ]
+    ],
+    "TYPE": "Monograph",
+    "_attachments": 
+    {
+        "cover.png": 
+        {
+            "content_type": "image/png",
+            "revpos": 11,
+            "digest": "md5-YtgjT71jnfG4xlK6pMwQ0A==",
+            "length": 109677,
+            "stub": true
+        },
+        "cover.png.thumb.jpeg": 
+        {
+            "content_type": "image/jpeg",
+            "revpos": 12,
+            "digest": "md5-upTd4bwsvF8dyj9b42APYQ==",
+            "length": 3524,
+            "stub": true
+        },
+        "9788523208899.epub": 
+        {
+            "content_type": "application/octet-stream",
+            "revpos": 60,
+            "digest": "md5-AU53bUZ9ZnNMA3thd6Wl8g==",
+            "length": 667921,
+            "stub": true
+        },
+        "9788523208899.jpg.thumb.jpeg": 
+        {
+            "content_type": "image/jpeg",
+            "revpos": 62,
+            "digest": "md5-YuqOKrEBWUI4c9+XOy6jnw==",
+            "length": 3504,
+            "stub": true
+        },
+        "9788523208899.pdf": 
+        {
+            "content_type": "application/pdf",
+            "revpos": 59,
+            "digest": "md5-YqlyzbiP4pKl/NNhzuk7Iw==",
+            "length": 1314264,
+            "stub": true
+        },
+        "ale_red_col_full_redusize.pdf": 
+        {
+            "content_type": "application/pdf",
+            "revpos": 35,
+            "digest": "md5-xPNLzYkVJNkDmgXjGkUjEA==",
+            "length": 1053599,
+            "stub": true
+        },
+        "ale_red_col_full.pdf": 
+        {
+            "content_type": "application/pdf",
+            "revpos": 22,
+            "digest": "md5-QL2tDWxs6ySxqp68UdAsWw==",
+            "length": 1633805,
+            "stub": true
+        },
+        "ale_red_col.epub": 
+        {
+            "content_type": "application/octet-stream",
+            "revpos": 44,
+            "digest": "md5-Ese1JiPmtnHw6rVPaxuEjA==",
+            "length": 523485,
+            "stub": true
+        },
+        "9788523208899.jpg": 
+        {
+            "content_type": "image/jpeg",
+            "revpos": 61,
+            "digest": "md5-H6dqFDpidUCbK6ojJMPyew==",
+            "length": 456015,
+            "stub": true
+        }
+    }
+}
