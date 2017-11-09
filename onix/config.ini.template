@@ -1,0 +1,12 @@
+[paths]
+sbidlistname: File name of list of sbid for generate XMLs
+xmlfoldername: Folder name for xml file output
+xmlfilename: XML file name output
+xmlout: Concatenate folder and file - DO NOT CHANGE
+
+[books.scielo]
+url = URL of SciELO Books website
+
+[couchdb-books]
+url = URL of CouchDB service
+port = port number of service

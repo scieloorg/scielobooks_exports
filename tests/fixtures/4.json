@@ -1,0 +1,225 @@
+{
+    "_id": "4",
+    "_rev": "69-8cf0089a72c4c307121fe52ee94ce57a",
+    "isbn": "8575410067",
+    "pdf_file": 
+    {
+        "uid": "pdfuid",
+        "filename": "9788575412886_redusize.pdf"
+    },
+    "is_comercial": false,
+    "visible": true,
+    "primary_descriptor": "MEDICAL / Pulmonary & Thoracic Medicine",
+    "year": "2001",
+    "bisac_code": 
+    [
+        
+        [
+            
+            [
+                "code",
+                "MED079000"
+            ]
+        ]
+    ],
+    "price_dollar": "0.00",
+    "city": "Rio de Janeiro",
+    "epub_file": 
+    {
+        "uid": "JLKHSTOM5B",
+        "filename": "9788575412886.epub"
+    },
+    "title": "História social da tuberculose e do tuberculoso: 1900-1950",
+    "eisbn": "9788575412886",
+    "translated_titles": [],
+    "format": 
+    [
+        
+        [
+            "height",
+            null
+        ],
+        
+        [
+            "width",
+            null
+        ]
+    ],
+    "translated_synopses": [],
+    "collection": 
+    [
+        
+        [
+            "individual_author",
+            null
+        ],
+        
+        [
+            "corporate_author",
+            null
+        ],
+        
+        [
+            "title",
+            "Antropologia e saúde collection"
+        ],
+        
+        [
+            "english_translated_title",
+            null
+        ],
+        
+        [
+            "total_number_of_volumes",
+            null
+        ]
+    ],
+    "serie": 
+    [
+        
+        [
+            "title",
+            null
+        ],
+        
+        [
+            "issue",
+            null
+        ],
+        
+        [
+            "issue_number",
+            null
+        ],
+        
+        [
+            "issn",
+            null
+        ]
+    ],
+    "doi_number": "http://dx.doi.org/10.7476/9788575412886",
+    "use_licence": "CC BY-NC-SA 3.0",
+    "pages": "248",
+    "shopping_info": [],
+    "translated_primary_descriptors": [],
+    "publisher": "Editora FIOCRUZ",
+    "language": "pt",
+    "cover_thumbnail": 
+    {
+        "uid": "",
+        "filename": "9788575412886.jpg.thumb.jpeg"
+    },
+    "country": "BR",
+    "cover": 
+    {
+        "uid": "coveruid",
+        "filename": "9788575412886.jpg"
+    },
+    "price_reais": "0.00",
+    "synopsis": "A intenção do autor é estudar o doente, investigando seus sentimentos e seu papel no contexto da tuberculose. Para tanto, ele desvenda a doença, os especialistas, as instituições e as relações sociais relacionadas à peste branca no Brasil nos primeiros cinqüenta anos do século passado. Interessante para os profissionais de saúde, historiadores e todos os interessados pelo enfoque humano na história da tuberculose, este livro discute a construção do ideário sobre a doença no Brasil, analisando comportamentos individuais e coletivos. A utilização de fontes documentais diversas, como obras literárias e os prontuários médicos, é importante, na medida em que constituem peças fundamentais na composição da história social da doença e do doente e de todos os envolvidos na tragédia regida pela tuberculose.",
+    "creators": 
+    [
+        
+        [
+            
+            [
+                "role",
+                "individual_author"
+            ],
+            
+            [
+                "full_name",
+                "Bertolli Filho, Claudio"
+            ],
+            
+            [
+                "link_resume",
+                "http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=P099901"
+            ]
+        ]
+    ],
+    "TYPE": "Monograph",
+    "_attachments": 
+    {
+        "cover.jpg": 
+        {
+            "content_type": "image/jpeg",
+            "revpos": 3,
+            "digest": "md5-P2d6YZ4xsqJJbWck+MYrvw==",
+            "length": 275590,
+            "stub": true
+        },
+        "fulltext.pdf": 
+        {
+            "content_type": "application/pdf",
+            "revpos": 2,
+            "digest": "md5-MnCveIeG9o42sCD0wUScTA==",
+            "length": 3098853,
+            "stub": true
+        },
+        "9788575412886.jpg": 
+        {
+            "content_type": "image/jpeg",
+            "revpos": 60,
+            "digest": "md5-grhflcmoNu1LyXuQt1U5HQ==",
+            "length": 196552,
+            "stub": true
+        },
+        "his_soc_tub_tub_1900-1950_full.pdf": 
+        {
+            "content_type": "application/pdf",
+            "revpos": 15,
+            "digest": "md5-nKbhNSY63JWbsGgjGdWEBw==",
+            "length": 3815503,
+            "stub": true
+        },
+        "9788575412886_redusize.pdf": 
+        {
+            "content_type": "application/pdf",
+            "revpos": 58,
+            "digest": "md5-R3lMVqGLbSrInXU/wh4PdQ==",
+            "length": 1631514,
+            "stub": true
+        },
+        "9788575412886.jpg.thumb.jpeg": 
+        {
+            "content_type": "image/jpeg",
+            "revpos": 61,
+            "digest": "md5-jIxtrM049hgUSONpICIimw==",
+            "length": 3358,
+            "stub": true
+        },
+        "his_soc_tub_tub_1900-1950_full_redusize.pdf": 
+        {
+            "content_type": "application/pdf",
+            "revpos": 30,
+            "digest": "md5-R3lMVqGLbSrInXU/wh4PdQ==",
+            "length": 1631514,
+            "stub": true
+        },
+        "cover.jpg.thumb.jpeg": 
+        {
+            "content_type": "image/jpeg",
+            "revpos": 4,
+            "digest": "md5-q5ghX+iqdNokwGs3U/KTCg==",
+            "length": 3167,
+            "stub": true
+        },
+        "9788575412886.epub": 
+        {
+            "content_type": "application/octet-stream",
+            "revpos": 59,
+            "digest": "md5-qP2QPx21CHwqM35r1WVGUg==",
+            "length": 573604,
+            "stub": true
+        },
+        "his_soc_tub_tub_1900-1950.epub": 
+        {
+            "content_type": "application/octet-stream",
+            "revpos": 43,
+            "digest": "md5-fZcZzGcry0QiXpyP4VC2cw==",
+            "length": 462420,
+            "stub": true
+        }
+    }
+}
