@@ -1,0 +1,25 @@
+[paths]
+# File name of list of sbid for generate XMLs
+sbidlistname = 
+
+# Folder name for xml file output
+xmlfoldername = 
+
+# XML file name output
+xmlfilename = 
+
+# Concatenate folder and file - DO NOT CHANGE
+xmlout = ${paths:xmlfoldername}/${paths:xmlfilename}
+
+
+[books.scielo]
+# Host of SciELO Books website
+host = books.scielo.org
+
+
+[couchdb-books]
+# Host of CouchDB service
+host = 
+
+# port number of service
+port =  
