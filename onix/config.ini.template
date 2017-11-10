@@ -1,25 +1,25 @@
 [paths]
-# File name of list of sbid for generate XMLs
+# File name of list of sbid for generate XMLs [required]
 sbidlistname = 
 
-# Folder name for xml file output
+# Folder name for xml file output [required]
 xmlfoldername = 
 
-# XML file name output
+# XML file name output [optional]
 xmlfilename = 
 
-# Concatenate folder and file - DO NOT CHANGE
-xmlout = ${paths:xmlfoldername}/${paths:xmlfilename}
+# To prefix file name with date iso format (yes/no) [required]
+prefix = 
 
 
 [books.scielo]
-# Host of SciELO Books website
+# Host of SciELO Books website [required]
 host = books.scielo.org
 
 
 [couchdb-books]
-# Host of CouchDB service
+# Host of CouchDB service [required]
 host = 
 
-# port number of service
+# port number of service [required]
 port =  
