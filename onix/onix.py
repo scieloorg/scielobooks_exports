@@ -543,7 +543,7 @@ YU ZA ZM ZW'
             supplydetail.append(price)
 
             pricetypecode = Element('PriceTypeCode')
-            pricetypecode.text = u'02'
+            pricetypecode.text = u'01'
             price.append(pricetypecode)
 
             priceamount = Element('PriceAmount')
@@ -569,13 +569,39 @@ YU ZA ZM ZW'
 
 
 def main():
+    # Format ISO date
+    dt = datetime.datetime.now()
+    dateiso = dt.strftime('%Y%m%d')
+
+    # Config
     config = configparser.ConfigParser()
     config._interpolation = configparser.ExtendedInterpolation()
     config.read('config.ini')
 
     sbidlistfile = config['paths']['sbidlistname']
+
+    xmlfilename = config['paths']['xmlfilename']
+
     xmlfolder = config['paths']['xmlfoldername']
-    xmlfileout = config['paths']['xmlout']
+
+    if config['paths']['prefix'] == 'yes':
+        if config['paths']['xmlfilename'] == '':
+            xmlfilename = dateiso
+        else:
+            xmlfilename = ('%s_%s' % (dateiso, xmlfilename))
+
+    if config['paths']['prefix'] == 'no':
+        if config['paths']['xmlfilename'] == '':
+            print('xmlfilename = empty.\nEnter a name in config.ini.')
+            exit()
+
+    if config['paths']['prefix'] == '':
+        if config['paths']['xmlfilename'] == '':
+            print('xmlfilename = empty.\nEnter a name in config.ini.')
+            exit()
+
+    xmlout = ('%s/%s.xml' % (xmlfolder, xmlfilename))
+    print(xmlout)
 
     host = config['couchdb-books']['host']
     port = config['couchdb-books']['port']
@@ -605,8 +631,8 @@ def main():
         os.mkdir(xmlfolder)
 
     # Write the XML file
-    f = open(xmlfileout, 'w')
-    f = open(xmlfileout, 'r+')
+    f = open(xmlout, 'w')
+    f = open(xmlout, 'r+')
 
     # Declaration whith quotation marks
     f.write(u'<?xml version="1.0" encoding="utf-8"?>\n')
