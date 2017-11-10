@@ -6,5 +6,6 @@ __pycache__/
 # Directories
 docs/
 xmls/
+build/
 
 config.ini
