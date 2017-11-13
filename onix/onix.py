@@ -14,7 +14,7 @@ def request_book(host, port, sbid):
     jsondocs = {}
     try:
         # open the connection
-        print('\nhttp://{0}:{1}/scielobooks_1a/{2}'.format(host, port, sbid))
+        print('\nhttp://%s:%s/scielobooks_1a/%s' % (host, port, sbid))
         r = requests.get('http://%s:%s/scielobooks_1a/%s' % (host, port, sbid))
 
         # reads the object
@@ -364,33 +364,6 @@ def json2xml(host, port, sbidlist, website):
                 'http://%s/id/%s/cover/cover.jpeg' % (website, sbid))
             resourceversion.append(resourcelink)
 
-            # SupportingResource2
-            supportingresource = Element('SupportingResource')
-            collateraldetail.append(supportingresource)
-
-            resourcecontenttype = Element('ResourceContentType')
-            resourcecontenttype.text = u'15'
-            supportingresource.append(resourcecontenttype)
-
-            contentaudience = Element('ContentAudience')
-            contentaudience.text = u'00'
-            supportingresource.append(contentaudience)
-
-            resourcemode = Element('ResourceMode')
-            resourcemode.text = u'06'
-            supportingresource.append(resourcemode)
-
-            resourceversion = Element('ResourceVersion')
-            supportingresource.append(resourceversion)
-
-            resourceform = Element('ResourceForm')
-            resourceform.text = u'01'
-            resourceversion.append(resourceform)
-
-            resourcelink = Element('ResourceLink')
-            resourcelink.text = ('http://%s/id/%s' % (website, sbid))
-            resourceversion.append(resourcelink)
-
             # Block 4
             product.append(etree.Comment('Block 4'))
 
@@ -499,6 +472,24 @@ required if book is digital-only'))
             suppliername = Element('SupplierName')
             suppliername.text = u'SciELO Books'
             supplier.append(suppliername)
+
+            '''websitetag is to differentiate from the object passed in the
+            function '''
+            websitetag = Element('Website')
+            supplier.append(websitetag)
+
+            websiterole = Element('WebsiteRole')
+            websiterole.text = u'29'
+            websitetag.append(websiterole)
+
+            websitedescription = Element('WebsiteDescription')
+            websitedescription.text = u"Metadata and book's page in SciELO \
+Books"
+            websitetag.append(websitedescription)
+
+            websitelink = Element('WebsiteLink')
+            websitelink.text = ('http://%s/id/%s' % (website, sbid))
+            websitetag.append(websitelink)
 
             productavailability = Element('ProductAvailability')
             productavailability.text = u'20'
