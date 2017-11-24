@@ -29,7 +29,10 @@ def request_book(host, port, sbid):
     return jsondocs
 
 
-def json2xml(host, port, sbidlist, website):
+def json2xml(config, sbidlist):
+    # Host and port of CouchDB service
+    host = config['couchdb-books']['host']
+    port = config['couchdb-books']['port']
 
     # Onix Elements
     onix = Element(
@@ -128,7 +131,7 @@ def json2xml(host, port, sbidlist, website):
             descriptivedetail.append(productform)
 
             productformdetail = Element('ProductFormDetail')
-            productformdetail.text = u'E101'
+            productformdetail.text = config['books.scielo']['productformdetail']
             descriptivedetail.append(productformdetail)
             descriptivedetail.append(etree.Comment(' E101 EPUB, E107 PDF '))
 
@@ -325,7 +328,7 @@ def json2xml(host, port, sbidlist, website):
                 text.text = book['synopsis']
                 textcontent.append(text)
 
-            # SupportingResource1
+            # SupportingResource
             supportingresource = Element('SupportingResource')
             collateraldetail.append(supportingresource)
 
@@ -360,8 +363,8 @@ def json2xml(host, port, sbidlist, website):
             resourceversionfeature.append(featurevalue)
 
             resourcelink = Element('ResourceLink')
-            resourcelink.text = (
-                'http://%s/id/%s/cover/cover.jpeg' % (website, sbid))
+            website = config['books.scielo']['host']
+            resourcelink.text = ('%s/id/%s/cover/cover.jpeg' % (website, sbid))
             resourceversion.append(resourcelink)
 
             # Block 4
@@ -473,8 +476,6 @@ required if book is digital-only'))
             suppliername.text = u'SciELO Books'
             supplier.append(suppliername)
 
-            '''websitetag is to differentiate from the object passed in the
-            function '''
             websitetag = Element('Website')
             supplier.append(websitetag)
 
@@ -488,7 +489,8 @@ Books"
             websitetag.append(websitedescription)
 
             websitelink = Element('WebsiteLink')
-            websitelink.text = ('http://%s/id/%s' % (website, sbid))
+            website = config['books.scielo']['host']
+            websitelink.text = ('%s/id/%s' % (website, sbid))
             websitetag.append(websitelink)
 
             productavailability = Element('ProductAvailability')
@@ -561,16 +563,14 @@ YU ZA ZM ZW'
 
 def main():
     # Format ISO date
-    dt = datetime.datetime.now()
-    dateiso = dt.strftime('%Y%m%d')
+    dateiso = datetime.datetime.now().strftime('%Y%m%d')
 
     # Config
     config = configparser.ConfigParser()
     config._interpolation = configparser.ExtendedInterpolation()
     config.read('config.ini')
 
-    sbidlistfile = config['paths']['sbidlistname']
-
+    # Folder and file names
     xmlfilename = config['paths']['xmlfilename']
 
     xmlfolder = config['paths']['xmlfoldername']
@@ -592,40 +592,33 @@ def main():
             exit()
 
     xmlout = ('%s/%s.xml' % (xmlfolder, xmlfilename))
-    print(xmlout)
 
-    host = config['couchdb-books']['host']
-    port = config['couchdb-books']['port']
+    print('\nfolder/xmlfile: %s\n' % xmlout)
 
-    website = config['books.scielo']['host']
-
-    # Receive sbid list file
-    f = open(sbidlistfile, 'r')
-    sbidlist = []
-
-    print('SBID list: ')
-    for i in f:
-        sbidlist.append(i)
-        print(i.strip())
+    # SBID List
+    with open(config['paths']['sbidlistname']) as f:
+        sbidlist = [line.strip() for line in f]
     f.close()
 
-    xmldocs = json2xml(
-        host=host,
-        port=int(port),
-        sbidlist=sbidlist,
-        website=website)
+    print('SBID list: ')
+
+    for i in sbidlist:
+        print(i)
+
+    # Build XML object
+    xmldocs = json2xml(config=config, sbidlist=sbidlist)
 
     # Check and create xml folder output
-    if os.path.exists(xmlfolder):
-        pass
-    else:
-        os.mkdir(xmlfolder)
+    if xmldocs:
+        if os.path.exists(xmlfolder):
+            pass
+        else:
+            os.mkdir(xmlfolder)
 
     # Write the XML file
     f = open(xmlout, 'w')
-    f = open(xmlout, 'r+')
 
-    # Declaration whith quotation marks
+    # Declaration with quotation marks
     f.write(u'<?xml version="1.0" encoding="utf-8"?>\n')
 
     f.write(xmldocs.decode('utf-8'))
