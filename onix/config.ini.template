@@ -16,6 +16,9 @@ prefix =
 # Host of SciELO Books website [required]
 host = books.scielo.org
 
+# Value for the ProductFormDetail Tag. Use E101 for EPUB or E107 for PDF [required]
+productformdetail = 
+
 
 [couchdb-books]
 # Host of CouchDB service [required]
