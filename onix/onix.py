@@ -152,6 +152,24 @@ def json2xml(config, sbidlist):
                             collectiontype.text = u'10'
                             collection.append(collectiontype)
 
+                            epublicense = Element('EpubLicense')
+                            collection.append(epublicense)
+
+                            epublicensename = Element('EpubLicenseName')
+                            epublicensename.text = u'Creative Commons License'
+                            epublicense.append(epublicensename)
+
+                            epublicenseexpression = Element('EpubLicenseExpression')
+                            epublicense.append(epublicenseexpression)
+
+                            epublicenseexpressiontype = Element('EpubLicenseExpressionType')
+                            epublicenseexpressiontype.text = u'02'
+                            epublicenseexpression.append(epublicenseexpressiontype)
+
+                            epublicenseexpressionlink = Element('EpubLicenseExpressionLink')
+                            epublicenseexpressionlink.text = u'https://creativecommons.org/licenses/by-nc/4.0/'
+                            epublicenseexpression.append(epublicenseexpressionlink)
+
                             titledetail_col = Element('TitleDetail')
                             collection.append(titledetail_col)
 
