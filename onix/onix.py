@@ -92,6 +92,15 @@ def json2xml(config, sbidlist):
             product.append(productidentifier)
 
             productidtype = Element('ProductIDType')
+            productidtype.text = u'03'
+            productidentifier.append(productidtype)
+            productidentifier.append(etree.Comment(' 03 is for GTIN-13 '))
+
+            # ProductIdentifier ISBN
+            productidentifier = Element('ProductIdentifier')
+            product.append(productidentifier)
+
+            productidtype = Element('ProductIDType')
             productidtype.text = u'15'
             productidentifier.append(productidtype)
             productidentifier.append(etree.Comment(' 15 is for ISBN-13 '))
