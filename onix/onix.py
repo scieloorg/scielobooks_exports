@@ -66,9 +66,9 @@ def json2xml(config, sbidlist):
     addressesname.text = u'SciELO Books'
     addresses.append(addressesname)
 
-    sentdate = Element('SentDate')
-    sentdate.text = datetime.datetime.today().strftime("%Y%m%d%H%M")
-    header.append(sentdate)
+    sentdatetime = Element('SentDateTime')
+    sentdatetime.text = datetime.datetime.today().strftime("%Y%m%d"+"T"+"%H%M")
+    header.append(sentdatetime)
 
     for sbid in sbidlist:
         sbid = sbid.strip()
@@ -296,7 +296,7 @@ def json2xml(config, sbidlist):
                 descriptivedetail.append(extent)
 
                 extenttype = Element('ExtentType')
-                extenttype.text = u'01'
+                extenttype.text = u'11'
                 extent.append(extenttype)
 
                 extentvalue = Element('ExtentValue')
@@ -517,24 +517,13 @@ Books"
             productavailability.text = u'20'
             supplydetail.append(productavailability)
 
-            contries = u'AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA \
-BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH \
-CI CK CL CM CN CO CR CS CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES \
-ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY \
-HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN \
-KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM \
-MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU SA SB \
-SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK \
-TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT \
-YU ZA ZM ZW'
-
             # Price Dollar
             price = Element('Price')
             supplydetail.append(price)
 
-            pricetypecode = Element('PriceTypeCode')
-            pricetypecode.text = u'01'
-            price.append(pricetypecode)
+            pricetype = Element('PriceType')
+            pricetype.text = u'01'
+            price.append(pricetype)
 
             priceamount = Element('PriceAmount')
             priceamount.text = book['price_dollar']
@@ -547,17 +536,21 @@ YU ZA ZM ZW'
             territory = Element('Territory')
             price.append(territory)
 
-            countriesinclude = Element('CountriesIncluded')
-            countriesinclude.text = contries
-            territory.append(countriesinclude)
+            regionsincluded = Element('RegionsIncluded')
+            regionsincluded.text = u'WORLD'
+            territory.append(regionsincluded)
+
+            countriesexcluded = Element('CountriesExcluded')
+            countriesexcluded.text = u'BR'
+            territory.append(countriesexcluded)
 
             # Price Reais
             price = Element('Price')
             supplydetail.append(price)
 
-            pricetypecode = Element('PriceTypeCode')
-            pricetypecode.text = u'01'
-            price.append(pricetypecode)
+            pricetype = Element('PriceType')
+            pricetype.text = u'01'
+            price.append(pricetype)
 
             priceamount = Element('PriceAmount')
             priceamount.text = book['price_reais']
@@ -571,7 +564,7 @@ YU ZA ZM ZW'
             price.append(territory)
 
             countriesinclude = Element('CountriesIncluded')
-            countriesinclude.text = contries
+            countriesinclude.text = u'BR'
             territory.append(countriesinclude)
 
     # Generates the XML
