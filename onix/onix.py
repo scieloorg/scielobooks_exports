@@ -66,9 +66,9 @@ def json2xml(config, sbidlist):
     addressesname.text = u'SciELO Books'
     addresses.append(addressesname)
 
-    sentdate = Element('SentDate')
-    sentdate.text = datetime.datetime.today().strftime("%Y%m%d%H%M")
-    header.append(sentdate)
+    sentdatetime = Element('SentDateTime')
+    sentdatetime.text = datetime.datetime.today().strftime("%Y%m%d"+"T"+"%H%M")
+    header.append(sentdatetime)
 
     for sbid in sbidlist:
         sbid = sbid.strip()
