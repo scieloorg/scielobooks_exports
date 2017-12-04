@@ -518,54 +518,61 @@ Books"
             supplydetail.append(productavailability)
 
             # Price Dollar
-            price = Element('Price')
-            supplydetail.append(price)
+            if book['price_dollar'] == "0.00" and book['price_reais'] == "0.00":
+                unpriceditemtype = Element('UnpricedItemType')
+                unpriceditemtype.text = u'01'
+                supplydetail.append(unpriceditemtype)
 
-            pricetype = Element('PriceType')
-            pricetype.text = u'01'
-            price.append(pricetype)
+            if book['price_dollar'] != "0.00":
+                price = Element('Price')
+                supplydetail.append(price)
 
-            priceamount = Element('PriceAmount')
-            priceamount.text = book['price_dollar']
-            price.append(priceamount)
+                pricetype = Element('PriceType')
+                pricetype.text = u'01'
+                price.append(pricetype)
 
-            currencycode = Element('CurrencyCode')
-            currencycode.text = u'USD'
-            price.append(currencycode)
+                priceamount = Element('PriceAmount')
+                priceamount.text = book['price_dollar']
+                price.append(priceamount)
 
-            territory = Element('Territory')
-            price.append(territory)
+                currencycode = Element('CurrencyCode')
+                currencycode.text = u'USD'
+                price.append(currencycode)
 
-            regionsincluded = Element('RegionsIncluded')
-            regionsincluded.text = u'WORLD'
-            territory.append(regionsincluded)
+                territory = Element('Territory')
+                price.append(territory)
 
-            countriesexcluded = Element('CountriesExcluded')
-            countriesexcluded.text = u'BR'
-            territory.append(countriesexcluded)
+                regionsincluded = Element('RegionsIncluded')
+                regionsincluded.text = u'WORLD'
+                territory.append(regionsincluded)
+
+                countriesexcluded = Element('CountriesExcluded')
+                countriesexcluded.text = u'BR'
+                territory.append(countriesexcluded)
 
             # Price Reais
-            price = Element('Price')
-            supplydetail.append(price)
+            if book['price_reais'] != "0.00":
+                price = Element('Price')
+                supplydetail.append(price)
 
-            pricetype = Element('PriceType')
-            pricetype.text = u'01'
-            price.append(pricetype)
+                pricetype = Element('PriceType')
+                pricetype.text = u'01'
+                price.append(pricetype)
 
-            priceamount = Element('PriceAmount')
-            priceamount.text = book['price_reais']
-            price.append(priceamount)
+                priceamount = Element('PriceAmount')
+                priceamount.text = book['price_reais']
+                price.append(priceamount)
 
-            currencycode = Element('CurrencyCode')
-            currencycode.text = u'BRL'
-            price.append(currencycode)
+                currencycode = Element('CurrencyCode')
+                currencycode.text = u'BRL'
+                price.append(currencycode)
 
-            territory = Element('Territory')
-            price.append(territory)
+                territory = Element('Territory')
+                price.append(territory)
 
-            countriesinclude = Element('CountriesIncluded')
-            countriesinclude.text = u'BR'
-            territory.append(countriesinclude)
+                countriesinclude = Element('CountriesIncluded')
+                countriesinclude.text = u'BR'
+                territory.append(countriesinclude)
 
     # Generates the XML
     return etree.tostring(onix,
