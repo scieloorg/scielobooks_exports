@@ -296,7 +296,7 @@ def json2xml(config, sbidlist):
                 descriptivedetail.append(extent)
 
                 extenttype = Element('ExtentType')
-                extenttype.text = u'01'
+                extenttype.text = u'11'
                 extent.append(extenttype)
 
                 extentvalue = Element('ExtentValue')
