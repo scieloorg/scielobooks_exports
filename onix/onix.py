@@ -532,9 +532,9 @@ YU ZA ZM ZW'
             price = Element('Price')
             supplydetail.append(price)
 
-            pricetypecode = Element('PriceTypeCode')
-            pricetypecode.text = u'01'
-            price.append(pricetypecode)
+            pricetype = Element('PriceType')
+            pricetype.text = u'01'
+            price.append(pricetype)
 
             priceamount = Element('PriceAmount')
             priceamount.text = book['price_dollar']
@@ -555,9 +555,9 @@ YU ZA ZM ZW'
             price = Element('Price')
             supplydetail.append(price)
 
-            pricetypecode = Element('PriceTypeCode')
-            pricetypecode.text = u'01'
-            price.append(pricetypecode)
+            pricetype = Element('PriceType')
+            pricetype.text = u'01'
+            price.append(pricetype)
 
             priceamount = Element('PriceAmount')
             priceamount.text = book['price_reais']
