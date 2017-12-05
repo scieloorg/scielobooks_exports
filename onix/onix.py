@@ -10,6 +10,7 @@ from iso639 import languages
 
 import fullname
 
+
 # Request
 def request_book(host, port, sbid):
     jsondocs = {}
@@ -131,7 +132,8 @@ def json2xml(config, sbidlist):
             if 'doi_number' in book:
                 idvalue = Element('IDValue')
                 idvalue.text = book['doi_number'].replace(
-                    'http://dx.doi.org/', '')
+                    'http://dx.doi.org/', '').replace(
+                    'https://dx.doi.org/', '')
                 productidentifier.append(idvalue)
 
             product.append(etree.Comment('Block 1'))
