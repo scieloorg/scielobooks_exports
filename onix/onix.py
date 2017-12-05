@@ -666,12 +666,13 @@ def main():
             os.mkdir(xmlfolder)
 
     # Write the XML file
-    f = open(xmlout, 'w')
+    with open(xmlout, encoding='utf-8-sig', mode='w') as f:
 
-    # Declaration with quotation marks
-    f.write(u'<?xml version="1.0" encoding="utf-8"?>\n')
+        # Declaration with quotation marks
+        f.write(u'<?xml version="1.0" encoding="utf-8"?>\n')
 
-    f.write(xmldocs.decode('utf-8'))
+        f.write(xmldocs.decode('utf-8'))
+
     f.close()
 
 if __name__ == "__main__":
