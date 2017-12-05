@@ -87,6 +87,10 @@ def json2xml(config, sbidlist):
             notificationtype.text = u'03'
             product.append(notificationtype)
 
+            recordsourcename = Element('RecordSourceName')
+            recordsourcename.text = u'SciELO Books'
+            product.append(recordsourcename)
+
             # ProductIdentifier ISBN
             productidentifier = Element('ProductIdentifier')
             product.append(productidentifier)
@@ -411,7 +415,7 @@ def json2xml(config, sbidlist):
                 publishingdetail.append(imprint)
 
                 imprintname = Element('ImprintName')
-                imprintname.text = u'SciELO - ' + book['publisher']
+                imprintname.text = book['publisher']
                 imprint.append(imprintname)
 
                 publisher = Element('Publisher')
