@@ -3,12 +3,11 @@ import os
 import configparser
 import requests
 import datetime
+import json
 
 from lxml.etree import Element
 from lxml import etree
 from iso639 import languages
-
-import fullname
 
 
 # Request
@@ -133,7 +132,10 @@ def json2xml(config, sbidlist):
                 idvalue = Element('IDValue')
                 idvalue.text = book['doi_number'].replace(
                     'http://dx.doi.org/', '').replace(
-                    'https://dx.doi.org/', '')
+                    'http://doi.org/', '').replace(
+                    'https://doi.org/', '').replace(
+                    'https://dx.doi.org/',  '')
+
                 productidentifier.append(idvalue)
 
             product.append(etree.Comment('Block 1'))
@@ -429,8 +431,9 @@ def json2xml(config, sbidlist):
                 publisher.append(publishingrole)
 
                 publishername = Element('PublisherName')
-                if fullname.publishers[book['publisher']]:
-                    publishername.text = fullname.publishers[book['publisher']]
+                pub = json.load(open('publishers.json'))
+                if pub[book['publisher']]:
+                    publishername.text = pub[book['publisher']]
                 else:
                     publishername.text = book['publisher']
 
