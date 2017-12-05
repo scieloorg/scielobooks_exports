@@ -8,6 +8,7 @@ from lxml.etree import Element
 from lxml import etree
 from iso639 import languages
 
+import fullname
 
 # Request
 def request_book(host, port, sbid):
@@ -426,7 +427,11 @@ def json2xml(config, sbidlist):
                 publisher.append(publishingrole)
 
                 publishername = Element('PublisherName')
-                publishername.text = book['publisher']
+                if fullname.publishers[book['publisher']]:
+                    publishername.text = fullname.publishers[book['publisher']]
+                else:
+                    publishername.text = book['publisher']
+
                 publisher.append(publishername)
 
                 publishingstatus = Element('PublishingStatus')
