@@ -530,13 +530,14 @@ Books"
             productavailability.text = u'20'
             supplydetail.append(productavailability)
 
-            # Price Dollar
-            if book['price_dollar'] == "0.00" and book['price_reais'] == "0.00":
+            # UnpricedItemType
+            if book['price_dollar'] == '0.00' and book['price_reais'] == '0.00':
                 unpriceditemtype = Element('UnpricedItemType')
                 unpriceditemtype.text = u'01'
                 supplydetail.append(unpriceditemtype)
 
-            if book['price_dollar'] != "0.00":
+            # Price Dollar
+            if book['price_dollar'] != '0.00':
                 price = Element('Price')
                 supplydetail.append(price)
 
@@ -559,12 +560,13 @@ Books"
                 regionsincluded.text = u'WORLD'
                 territory.append(regionsincluded)
 
-                countriesexcluded = Element('CountriesExcluded')
-                countriesexcluded.text = u'BR'
-                territory.append(countriesexcluded)
+                if book['price_reais'] != '0.00':
+                    countriesexcluded = Element('CountriesExcluded')
+                    countriesexcluded.text = u'BR'
+                    territory.append(countriesexcluded)
 
             # Price Reais
-            if book['price_reais'] != "0.00":
+            if book['price_reais'] != '0.00':
                 price = Element('Price')
                 supplydetail.append(price)
 
@@ -583,9 +585,15 @@ Books"
                 territory = Element('Territory')
                 price.append(territory)
 
-                countriesinclude = Element('CountriesIncluded')
-                countriesinclude.text = u'BR'
-                territory.append(countriesinclude)
+                if book['price_dollar'] == '0.00':
+                    regionsincluded = Element('RegionsIncluded')
+                    regionsincluded.text = u'WORLD'
+                    territory.append(regionsincluded)
+
+                if book['price_dollar'] != '0.00':
+                    countriesinclude = Element('CountriesIncluded')
+                    countriesinclude.text = u'BR'
+                    territory.append(countriesinclude)
 
     # Generates the XML
     return etree.tostring(onix,
