@@ -429,7 +429,7 @@ def json2xml(config, sbidlist):
                 publisher.append(publishingrole)
 
                 publishername = Element('PublisherName')
-                pub = json.load(open('publishers.json'))
+                pub = json.load(open('publishers_ansi.json'))
                 if pub[book['publisher']]:
                     publishername.text = pub[book['publisher']]
                 else:
