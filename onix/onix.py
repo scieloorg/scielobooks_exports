@@ -134,7 +134,7 @@ def json2xml(config, sbidlist):
                     'http://dx.doi.org/', '').replace(
                     'http://doi.org/', '').replace(
                     'https://doi.org/', '').replace(
-                    'https://dx.doi.org/',  '')
+                    'https://dx.doi.org/', '')
 
                 productidentifier.append(idvalue)
 
@@ -191,8 +191,6 @@ def json2xml(config, sbidlist):
                             collectiontype = Element('CollectionType')
                             collectiontype.text = u'10'
                             collection.append(collectiontype)
-
-
 
                             titledetail_col = Element('TitleDetail')
                             collection.append(titledetail_col)
