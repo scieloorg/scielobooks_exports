@@ -8,4 +8,7 @@ docs/
 output/
 build/
 
+# Files
 config.ini
+publishers_utf8.json
+publishers_ansi.json

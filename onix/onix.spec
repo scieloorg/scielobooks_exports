@@ -2,7 +2,6 @@
 
 block_cipher = None
 
-
 a = Analysis(['onix.py'],
              pathex=['C:\\Users\\[user.name]\\projetos\\scielo\\onix-master\\onix\\'],
              binaries=[],
@@ -16,6 +15,7 @@ a = Analysis(['onix.py'],
              cipher=block_cipher)
 pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
+
 exe = EXE(pyz,
           a.scripts,
           a.binaries,

@@ -3,6 +3,7 @@ import os
 import configparser
 import requests
 import datetime
+import platform
 import json
 
 from lxml.etree import Element
@@ -161,26 +162,28 @@ def json2xml(config, sbidlist):
             primarycontenttype.text = u'10'
             descriptivedetail.append(primarycontenttype)
 
-            epublicense = Element('EpubLicense')
-            descriptivedetail.append(epublicense)
+            if 'is_comercial' in book:
+                if book['is_comercial'] == False:
+                    epublicense = Element('EpubLicense')
+                    descriptivedetail.append(epublicense)
 
-            epublicensename = Element('EpubLicenseName')
-            epublicensename.text = u'Creative Commons License'
-            epublicense.append(epublicensename)
+                    epublicensename = Element('EpubLicenseName')
+                    epublicensename.text = u'Creative Commons License'
+                    epublicense.append(epublicensename)
 
-            epublicenseexpression = Element('EpubLicenseExpression')
-            epublicense.append(epublicenseexpression)
+                    epublicenseexpression = Element('EpubLicenseExpression')
+                    epublicense.append(epublicenseexpression)
 
-            epublicenseexpressiontype = Element('EpubLicenseExpressionType')
-            epublicenseexpressiontype.text = u'02'
-            epublicenseexpression.append(epublicenseexpressiontype)
+                    epublicenseexpressiontype = Element('EpubLicenseExpressionType')
+                    epublicenseexpressiontype.text = u'02'
+                    epublicenseexpression.append(epublicenseexpressiontype)
 
-            epublicenseexpressionlink = Element('EpubLicenseExpressionLink')
-            epublicenseexpressionlink.text = u'https://creativecommons.org/licenses/by-nc/4.0/'
-            epublicenseexpression.append(epublicenseexpressionlink)
+                    epublicenseexpressionlink = Element('EpubLicenseExpressionLink')
+                    epublicenseexpressionlink.text = book['use_licence']
+                    epublicenseexpression.append(epublicenseexpressionlink)
 
             # Collection
-            if 'collection' in book:
+            if ('collection' in book):
                 for k in book['collection']:
                     if k[0] == 'title':
                         if k[1] is not None:
@@ -428,8 +431,13 @@ def json2xml(config, sbidlist):
                 publishingrole.text = u'01'
                 publisher.append(publishingrole)
 
+                if platform.system() != 'Windows':
+                    pubfile = 'publishers_utf8.json'
+                else:
+                    pubfile = 'publishers_ansi.json'
+
                 publishername = Element('PublisherName')
-                pub = json.load(open('publishers_ansi.json'))
+                pub = json.load(open(pubfile))
                 if pub[book['publisher']]:
                     publishername.text = pub[book['publisher']]
                 else:
