@@ -3,14 +3,14 @@ This repositories contains the KBART and ONIX modules
 
 
 # KBART
-Script to generate KBART Plan Text format from metadata of SciELO Books
+Script to generate KBART Plain Text format from SciELO Books metadata
 
 [More information](https://github.com/scieloorg/scielobooks_exports/blob/master/kbart/README.md)
 
 
 
 # ONIX
-Script to generate Onix XML format from metadata of SciELO Books
+Script to generate Onix XML format from SciELO Books metadata 
 
 [More information](https://github.com/scieloorg/scielobooks_exports/blob/master/onix/README.md)
 
