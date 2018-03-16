@@ -1,23 +1,17 @@
 [paths]
-# File name of list of sbid for generate XMLs [required]
+# File name of list of sbid for generate KBART [required]
 sbidlistname = 
 
-# Folder name for xml file output [required]
-xmlfoldername = 
+# Folder name for KBART file output [required]
+kbartfoldername = output
 
-# XML file name output [optional]
-xmlfilename = 
-
-# To prefix file name with date iso format (yes/no) [required]
-prefix = 
+# KBART file name output [optional]
+kbartfilename = 
 
 
 [books.scielo]
 # Host of SciELO Books website [required]
-host = books.scielo.org
-
-# Value for the ProductFormDetail Tag. Use E101 for EPUB or E107 for PDF [required]
-productformdetail = 
+host = 
 
 
 [couchdb-books]
@@ -25,4 +19,4 @@ productformdetail =
 host = 
 
 # port number of service [required]
-port =  
+port = 
