@@ -1,5 +1,5 @@
 # ONIX XML
-Script to generate Onix XML format from metadata of SciELO Books
+Script to generate Onix XML format from SciELO Books metadata
 
 Version: 3.0
 

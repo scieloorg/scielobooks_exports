@@ -1,5 +1,5 @@
 # KBART
-Script to generate KBART Plan Text format from metadata of SciELO Books
+Script to generate KBART Plain Text format from SciELO Books metadata
 
 Version: 1.0
 
