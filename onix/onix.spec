@@ -3,9 +3,9 @@
 block_cipher = None
 
 a = Analysis(['onix.py'],
-             pathex=['C:\\Users\\[user.name]\\projetos\\scielo\\onix-master\\onix\\'],
+             pathex=['C:\\Users\\ednilson.gesseff\\projetos\\scielo\\onix-master\\onix\\'],
              binaries=[],
-             datas=[('C:\\Users\\[user.name]\\Envs\\onix-env\\Lib\\site-packages\\iso639\\*.*', 'iso639')],
+             datas=[('C:\\Users\\ednilson.gesseff\\Envs\\onix-env\\Lib\\site-packages\\iso639\\*.*', 'iso639')],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
