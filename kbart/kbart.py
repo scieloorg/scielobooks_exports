@@ -1,9 +1,10 @@
 # coding: utf-8
+import os
 import configparser
-import requests
 import datetime
 import csv
 
+import requests
 
 # Config
 config = configparser.ConfigParser()
@@ -64,9 +65,15 @@ def json2kbart(sbidlist):
         'access_type'  # F "is_comercial": false. P "is_comercial": true
         ]
 
-    # Creatge the CSV file
+    # Create the KBART file
     folder = config['paths']['kbartfoldername']
+    if os.path.exists(folder):
+        pass
+    else:
+        os.mkdir(folder)
+
     name = config['paths']['kbartfilename']
+
     dateiso = datetime.datetime.now().strftime('%Y%m%d')
 
     kbartfile = ('%s/%s_%s.txt' % (folder, name, dateiso))
@@ -126,9 +133,9 @@ def json2kbart(sbidlist):
 
             access_type = None
             if 'is_comercial' in book:
-                if book['is_comercial'] == True:
+                if book['is_comercial'] is True:
                     access_type = 'P'
-                if book['is_comercial'] == False:
+                if book['is_comercial'] is False:
                     access_type = 'F'
 
             # CSV content
