@@ -163,7 +163,7 @@ def json2xml(config, sbidlist):
             descriptivedetail.append(primarycontenttype)
 
             if 'is_comercial' in book:
-                if book['is_comercial'] == False:
+                if book['is_comercial'] is False:
                     epublicense = Element('EpubLicense')
                     descriptivedetail.append(epublicense)
 
