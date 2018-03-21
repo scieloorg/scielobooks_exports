@@ -74,7 +74,7 @@ def json2kbart(sbidlist):
 
     name = config['paths']['kbartfilename']
 
-    dateiso = datetime.datetime.now().strftime('%Y%m%d')
+    dateiso = datetime.datetime.now().strftime('%Y-%m-%d')
 
     kbartfile = ('%s/%s_%s.txt' % (folder, name, dateiso))
 
