@@ -7,6 +7,7 @@ __pycache__/
 docs/
 output/
 build/
+logs/
 
 # Files
 config.ini
