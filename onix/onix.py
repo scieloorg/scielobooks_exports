@@ -691,6 +691,10 @@ def main():
     config.read('config.ini')
 
     # Folder and file names
+    if config['paths']['sbidlistname'] == '':
+        print('sbidlistname=empty.\nEnter the sbid list name in config.ini.')
+        exit()
+
     xmlfilename = config['paths']['xmlfilename']
 
     xmlfolder = config['paths']['xmlfoldername']
@@ -710,6 +714,12 @@ def main():
         if config['paths']['xmlfilename'] == '':
             print('xmlfilename = empty.\nEnter a name in config.ini.')
             exit()
+
+    if config['books.scielo']['productformdetail'] == '':
+        print('productformdetail = empty.\n\
+Enter a code in config.ini.\n\
+Use E101 for EPUB or E107 for PDF')
+        exit()
 
     xmlout = ('%s/%s.xml' % (xmlfolder, xmlfilename))
 
@@ -744,6 +754,7 @@ def main():
         f.write(xmldocs.decode('utf-8'))
 
     f.close()
+
 
 if __name__ == "__main__":
     main()
