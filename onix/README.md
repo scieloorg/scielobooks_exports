@@ -22,5 +22,5 @@ http://www.editeur.org/12/About-Release-3.0/
 
 For Windows platform the publishers.json file should be in UTF-8 Unicode and CRFL line terminators.
 
-`$ file publishers.json
-publishers.json: UTF-8 Unicode text, with CRLF line terminators`
+`$ file publishers.json`
+`publishers.json: UTF-8 Unicode text, with CRLF line terminators`
