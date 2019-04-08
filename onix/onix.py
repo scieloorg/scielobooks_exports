@@ -3,7 +3,6 @@ import os
 import configparser
 import requests
 import datetime
-import platform
 import json
 
 import logging
@@ -482,13 +481,8 @@ def json2xml(config, sbidlist):
                     publishingrole.text = u'01'
                     publisher.append(publishingrole)
 
-                    if platform.system() != 'Windows':
-                        pubfile = 'publishers_utf8.json'
-                    else:
-                        pubfile = 'publishers_ansi.json'
-
                     publishername = Element('PublisherName')
-                    pub = json.load(open(pubfile))
+                    pub = json.load(open('publishers.json'))
                     if pub[book['publisher']]:
                         publishername.text = pub[book['publisher']]
                     else:
