@@ -531,8 +531,8 @@ def json2xml(config, sbidlist):
                 territory.append(regionsincluded)
 
                 # Block 5
-                product.append(etree.Comment('Block 5 - Related material not \
-    required if book is digital-only'))
+                product.append(etree.Comment(
+                    'Block 5 - Related material not required if book is digital-only'))
 
                 # Se ISBN existir
                 if 'isbn' in book:
@@ -588,8 +588,7 @@ def json2xml(config, sbidlist):
                 websitetag.append(websiterole)
 
                 websitedescription = Element('WebsiteDescription')
-                websitedescription.text = u"Metadata and book's page in SciELO \
-    Books"
+                websitedescription.text = u"Metadata and book's page in SciELO Books"
                 websitetag.append(websitedescription)
 
                 websitelink = Element('WebsiteLink')
