@@ -332,7 +332,7 @@ def json2xml(config, sbidlist):
 
                 # DescriptibeDetail/EditionType
                 editiontype = Element('EditionType')
-                editiontype.text = u'DGO'
+                editiontype.text = u'NED'
                 descriptivedetail.append(editiontype)
 
                 # DescriptibeDetail/EditionNumber
