@@ -187,7 +187,7 @@ def json2xml(config, sbidlist):
                         descriptivedetail.append(epublicense)
 
                         epublicensename = Element('EpubLicenseName')
-                        epublicensename.text = u'Creative Commons License'
+                        epublicensename.text = u'cc by'
                         epublicense.append(epublicensename)
 
                         epublicenseexpression = Element(
