@@ -8,8 +8,8 @@ https://www.uksg.org/sites/uksg.org/files/KBART_Phase_I_Recommended_Practice.pdf
 
 # Requirements
 
-- requests==2.18.4
-- PyInstaller==3.3
+- requests==2.24.0
+- PyInstaller==4.0
 
 
 # Download onix.exe for Windows
