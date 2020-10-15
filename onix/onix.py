@@ -282,7 +282,7 @@ def json2xml(config, sbidlist):
                         'individual_author': u'A01',
                         'corporate_author': u'A01',
                         'translator': u'B06',
-                        'organizer': u'B13',
+                        'organizer': u'B01',
                         'coordinator': u'B15',
                         'editor': u'B21',
                         'collaborator': u'Z99',
