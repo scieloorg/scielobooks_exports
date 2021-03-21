@@ -1,4 +1,4 @@
-lxml==4.5.2
+lxml==4.6.3
 iso-639==0.4.5
 requests==2.24.0
 PyInstaller==4.0
