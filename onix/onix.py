@@ -1,14 +1,15 @@
 # coding: utf-8
-import os
 import configparser
-import requests
+import csv
 import datetime
 import json
+import os
+import requests
 
-import logging
-from lxml.etree import Element
-from lxml import etree
 from iso639 import languages
+import logging
+from lxml import etree
+from lxml.etree import Element
 
 # Check and create logs directory
 if os.path.exists('logs'):
@@ -46,7 +47,7 @@ def request_book(host, port, sbid):
     return jsondocs
 
 
-def json2xml(config, sbidlist):
+def json2xml(config, sbidlist, demap):
     # Host and port of CouchDB service
     host = config['couchdb-books']['host']
     port = config['couchdb-books']['port']
@@ -520,9 +521,27 @@ def json2xml(config, sbidlist):
                 territory = Element('Territory')
                 salesrights.append(territory)
 
-                regionsincluded = Element('RegionsIncluded')
-                regionsincluded.text = u'WORLD'
-                territory.append(regionsincluded)
+                # Check if has rules for this SBID
+                if sbid in demap.keys():
+
+                    if 'countriesincluded' in demap[sbid][0]:
+                        countriesincluded = Element('CountriesIncluded')
+                        countriesincluded.text = demap[sbid][0]['countriesincluded']
+                        territory.append(countriesincluded)
+
+                    if 'countriesexcluded' in demap[sbid][0]:
+                        regionsincluded = Element('RegionsIncluded')
+                        regionsincluded.text = u'WORLD'
+                        territory.append(regionsincluded)
+
+                        countriesexcluded = Element('CountriesExcluded')
+                        countriesexcluded.text = demap[sbid][0]['countriesexcluded']
+                        territory.append(countriesexcluded)
+
+                else:
+                    regionsincluded = Element('RegionsIncluded')
+                    regionsincluded.text = u'WORLD'
+                    territory.append(regionsincluded)
 
                 # Block 5
                 product.append(etree.Comment(
@@ -718,6 +737,20 @@ Use E101 for EPUB or E107 for PDF')
 
     print('\nfolder/xmlfile: %s\n' % xmlout)
 
+    # CSV Data Entry Map
+    demap = {}
+    csvdelimiter = config['paths']['csvdelimiter']
+    with open(config['paths']['sourcepath']) as f:
+        csvReader = csv.DictReader(f, delimiter=csvdelimiter)
+        for rows in csvReader:
+            rows = {k: v for k, v in rows.items() if v}
+            sbid = rows['sbid']
+            if sbid not in demap.keys():
+                demap.update({sbid:[]})
+            rows.pop('sbid')
+            demap[sbid].append(rows)
+    f.close()
+
     # SBID List
     with open(config['paths']['sbidlistname']) as f:
         sbidlist = [line.strip() for line in f]
@@ -729,7 +762,7 @@ Use E101 for EPUB or E107 for PDF')
         print(i)
 
     # Build XML object
-    xmldocs = json2xml(config=config, sbidlist=sbidlist)
+    xmldocs = json2xml(config=config, sbidlist=sbidlist, demap=demap)
 
     # Check and create xml folder output
     if xmldocs:

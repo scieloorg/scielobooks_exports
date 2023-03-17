@@ -1,15 +1,21 @@
 [paths]
 # File name of list of sbid for generate XMLs [required]
-sbidlistname = 
+sbidlistname =
 
 # Folder name for xml file output [required]
-xmlfoldername = 
+xmlfoldername =
 
 # XML file name output [optional]
-xmlfilename = 
+xmlfilename =
 
 # To prefix file name with date iso format (yes/no) [required]
-prefix = 
+prefix =
+
+# Path and name of CSV file with rules for territory or language
+sourcepath = source/sbid_data_entry.csv
+
+# CSV Delimiter [required]
+csvdelimiter = ;
 
 
 [books.scielo]
@@ -17,12 +23,12 @@ prefix =
 host = books.scielo.org
 
 # Value for the ProductFormDetail Tag. Use E101 for EPUB or E107 for PDF [required]
-productformdetail = 
+productformdetail =
 
 
 [couchdb-books]
 # Host of CouchDB service [required]
-host = 
+host =
 
 # port number of service [required]
-port =  
+port =
