@@ -521,7 +521,7 @@ def json2xml(config, sbidlist, demap):
                 territory = Element('Territory')
                 salesrights.append(territory)
 
-
+                # Check if has rules for this SBID
                 if sbid in demap.keys():
 
                     if 'countriesincluded' in demap[sbid][0]:
