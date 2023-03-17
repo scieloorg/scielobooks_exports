@@ -22,6 +22,33 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+def languagecountrycode(descriptivedetail, lang):
+
+    countrycodemap = {
+        'por' : 'BR',
+        'eng' : 'US',
+        'spa' : 'CO',
+                }
+    if lang:
+        language = Element('Language')
+        descriptivedetail.append(language)
+
+        languagerole = Element('LanguageRole')
+        languagerole.text = u'01'
+        language.append(languagerole)
+
+        languagecode = Element('LanguageCode')
+        languagecode.text = lang.bibliographic
+        language.append(languagecode)
+
+        countrycode = Element('CountryCode')
+        countrycode.text = countrycodemap[lang.bibliographic]
+        language.append(countrycode)
+    else:
+        msg = (sbid, ' sem idioma')
+        logger.info(msg)
+
+
 # Request
 def request_book(host, port, sbid):
     jsondocs = {}
@@ -350,17 +377,45 @@ def json2xml(config, sbidlist, demap):
                     descriptivedetail.append(editionnumber)
 
                 if 'language' in book:
-                    language = Element('Language')
-                    descriptivedetail.append(language)
+                    # language = Element('Language')
+                    # descriptivedetail.append(language)
+                    #
+                    # languagerole = Element('LanguageRole')
+                    # languagerole.text = u'01'
+                    # language.append(languagerole)
 
-                    languagerole = Element('LanguageRole')
-                    languagerole.text = u'01'
-                    language.append(languagerole)
-
-                    languagecode = Element('LanguageCode')
+                    lang = None
                     lang = languages.get(alpha2=book['language'])
-                    languagecode.text = lang.bibliographic
-                    language.append(languagecode)
+
+                    if sbid in demap.keys():
+                        for l in demap[sbid]:
+
+                            if 'languagecode' in l:
+
+                                language = Element('Language')
+                                descriptivedetail.append(language)
+
+                                languagerole = Element('LanguageRole')
+                                languagerole.text = u'01'
+                                language.append(languagerole)
+
+                                languagecode = Element('LanguageCode')
+                                languagecode.text = l['languagecode']
+                                language.append(languagecode)
+
+                                if 'countrycode' in l:
+                                    countrycode = Element('CountryCode')
+                                    countrycode.text = l['countrycode']
+                                    language.append(countrycode)
+
+                                if 'scriptcode' in l:
+                                    scriptcode = Element('ScriptCode')
+                                    scriptcode.text = l['scriptcode']
+                                    language.append(scriptcode)
+                            else:
+                                languagecountrycode(descriptivedetail, lang)
+                    else:
+                        languagecountrycode(descriptivedetail, lang)
 
                 if 'pages' in book:
                     extent = Element('Extent')
@@ -523,7 +578,6 @@ def json2xml(config, sbidlist, demap):
 
                 # Check if has rules for this SBID
                 if sbid in demap.keys():
-
                     if 'countriesincluded' in demap[sbid][0]:
                         countriesincluded = Element('CountriesIncluded')
                         countriesincluded.text = demap[sbid][0]['countriesincluded']
@@ -538,6 +592,11 @@ def json2xml(config, sbidlist, demap):
                         countriesexcluded.text = demap[sbid][0]['countriesexcluded']
                         territory.append(countriesexcluded)
 
+                    if 'countriesincluded' not in demap[sbid][0] \
+                    and 'countriesexcluded' not in  demap[sbid][0]:
+                        regionsincluded = Element('RegionsIncluded')
+                        regionsincluded.text = u'WORLD'
+                        territory.append(regionsincluded)
                 else:
                     regionsincluded = Element('RegionsIncluded')
                     regionsincluded.text = u'WORLD'
