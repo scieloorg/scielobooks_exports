@@ -602,6 +602,10 @@ def json2xml(config, sbidlist, demap):
                     regionsincluded.text = u'WORLD'
                     territory.append(regionsincluded)
 
+                rowsalesrightstype = Element('ROWSalesRightsType')
+                rowsalesrightstype.text = u'00'
+                publishingdetail.append(rowsalesrightstype)
+
                 # Block 5
                 product.append(etree.Comment(
                     'Block 5 - Related material not required if book is digital-only'))
