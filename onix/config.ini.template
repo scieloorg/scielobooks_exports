@@ -32,3 +32,9 @@ host =
 
 # port number of service [required]
 port =
+
+# user of the service [required]
+user =
+
+# password of the service [required]
+password =
