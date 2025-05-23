@@ -10,6 +10,7 @@ from iso639 import languages
 import logging
 from lxml import etree
 from lxml.etree import Element
+from lxml.etree import Element, SubElement
 
 # Check and create logs directory
 if os.path.exists('logs'):
@@ -22,6 +23,23 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+def add_keywords_subject(descriptivedetail_element, keywords_string):
+    """
+    Adiciona um bloco <Subject> com palavras-chave ao elemento <DescriptiveDetail> do ONIX.
+    :param descriptivedetail_element: Elemento <DescriptiveDetail> do XML.
+    :param keywords_string: String com palavras-chave separadas por ponto e vírgula.
+    """
+    if keywords_string:
+        subject = Element('Subject')
+
+        subjectschemeidentifier = SubElement(subject, 'SubjectSchemeIdentifier')
+        subjectschemeidentifier.text = '20'  # Code 20 = keywords
+
+        subjectheadingtext = SubElement(subject, 'SubjectHeadingText')
+        subjectheadingtext.text = keywords_string
+
+        descriptivedetail_element.append(subject)
+        
 def languagecountrycode(descriptivedetail, lang):
 
     countrycodemap = {
@@ -453,6 +471,12 @@ def json2xml(config, sbidlist, demap):
                             subjectcode = Element('SubjectCode')
                             subjectcode.text = key[1]
                             subject.append(subjectcode)
+                
+                # Adicionar palavras-chave (keywords)
+                if 'primary_descriptor' in book:
+                    keywords_string = book['primary_descriptor']
+                    add_keywords_subject(descriptivedetail, keywords_string)
+                
                 # Block 2
                 product.append(etree.Comment('Block 2'))
 
