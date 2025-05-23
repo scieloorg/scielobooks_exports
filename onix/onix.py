@@ -50,16 +50,16 @@ def languagecountrycode(descriptivedetail, lang):
 
 
 # Request
-def request_book(host, port, sbid):
+def request_book(user, password, host, port, sbid):
     jsondocs = {}
     try:
         # open the connection
         print('\n')
-        msg = ('http://%s:%s/scielobooks_1a/%s' % (host, port, sbid))
+        msg = ('http://%s:%s@%s:%s/scielobooks_1a/%s' % (user, password, host, port, sbid))
         logger.info(msg)
         print(msg)
 
-        r = requests.get('http://%s:%s/scielobooks_1a/%s' % (host, port, sbid))
+        r = requests.get('http://%s:%s@%s:%s/scielobooks_1a/%s' % (user, password, host, port, sbid))
 
         # reads the object
         jsondocs = r.json()
@@ -76,6 +76,8 @@ def request_book(host, port, sbid):
 
 def json2xml(config, sbidlist, demap):
     # Host and port of CouchDB service
+    user = config['couchdb-books']['user']
+    password = config['couchdb-books']['password']
     host = config['couchdb-books']['host']
     port = config['couchdb-books']['port']
 
@@ -120,7 +122,7 @@ def json2xml(config, sbidlist, demap):
         sbid = sbid.strip()
         book = {}
         try:
-            book = request_book(host, port, sbid)
+            book = request_book(user, password, host, port, sbid)
             if '_id' in book:
                 # Product Elements
                 product = Element('Product')
