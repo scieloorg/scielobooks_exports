@@ -678,64 +678,117 @@ def json2xml(config, sbidlist, demap):
                 #     unpriceditemtype.text = u'01'
                 #     supplydetail.append(unpriceditemtype)
 
-                # Price Dollar
-                # if book['price_dollar'] != '0.00':
-                price = Element('Price')
-                supplydetail.append(price)
+                # Preços
+                usd_price = book.get('price_dollar', '').strip()
+                brl_price = book.get('price_reais', '').strip()
 
-                pricetype = Element('PriceType')
-                pricetype.text = u'01'
-                price.append(pricetype)
+                # Caso existam os dois preços
+                if usd_price and brl_price:
+                    # USD
+                    price = Element('Price')
+                    supplydetail.append(price)
 
-                priceamount = Element('PriceAmount')
-                priceamount.text = book['price_dollar']
-                price.append(priceamount)
+                    pricetype = Element('PriceType')
+                    pricetype.text = u'01'
+                    price.append(pricetype)
 
-                currencycode = Element('CurrencyCode')
-                currencycode.text = u'USD'
-                price.append(currencycode)
+                    priceamount = Element('PriceAmount')
+                    priceamount.text = usd_price
+                    price.append(priceamount)
 
-                territory = Element('Territory')
-                price.append(territory)
+                    currencycode = Element('CurrencyCode')
+                    currencycode.text = u'USD'
+                    price.append(currencycode)
 
-                regionsincluded = Element('RegionsIncluded')
-                regionsincluded.text = u'WORLD'
-                territory.append(regionsincluded)
+                    territory = Element('Territory')
+                    price.append(territory)
 
-                if book['price_reais'] != '0.00':
-                    countriesexcluded = Element('CountriesExcluded')
-                    countriesexcluded.text = u'BR'
-                    territory.append(countriesexcluded)
-
-                # Price Reais
-                # if book['price_reais'] != '0.00':
-                price = Element('Price')
-                supplydetail.append(price)
-
-                pricetype = Element('PriceType')
-                pricetype.text = u'01'
-                price.append(pricetype)
-
-                priceamount = Element('PriceAmount')
-                priceamount.text = book['price_reais']
-                price.append(priceamount)
-
-                currencycode = Element('CurrencyCode')
-                currencycode.text = u'BRL'
-                price.append(currencycode)
-
-                territory = Element('Territory')
-                price.append(territory)
-
-                if book['price_dollar'] == '0.00':
                     regionsincluded = Element('RegionsIncluded')
                     regionsincluded.text = u'WORLD'
                     territory.append(regionsincluded)
 
+                    countriesexcluded = Element('CountriesExcluded')
+                    countriesexcluded.text = u'BR'
+                    territory.append(countriesexcluded)
+
+                    # BRL
+                    price = Element('Price')
+                    supplydetail.append(price)
+
+                    pricetype = Element('PriceType')
+                    pricetype.text = u'01'
+                    price.append(pricetype)
+
+                    priceamount = Element('PriceAmount')
+                    priceamount.text = brl_price
+                    price.append(priceamount)
+
+                    currencycode = Element('CurrencyCode')
+                    currencycode.text = u'BRL'
+                    price.append(currencycode)
+
+                    territory = Element('Territory')
+                    price.append(territory)
+
+                    regionsincluded = Element('RegionsIncluded')
+                    regionsincluded.text = u'WORLD'
+                    territory.append(regionsincluded)
+
+                    countriesincluded = Element('CountriesIncluded')
+                    countriesincluded.text = u'BR'
+                    territory.append(countriesincluded)
+
+                # Apenas USD
+                elif usd_price:
+                    price = Element('Price')
+                    supplydetail.append(price)
+
+                    pricetype = Element('PriceType')
+                    pricetype.text = u'01'
+                    price.append(pricetype)
+
+                    priceamount = Element('PriceAmount')
+                    priceamount.text = usd_price
+                    price.append(priceamount)
+
+                    currencycode = Element('CurrencyCode')
+                    currencycode.text = u'USD'
+                    price.append(currencycode)
+
+                    territory = Element('Territory')
+                    price.append(territory)
+
+                    regionsincluded = Element('RegionsIncluded')
+                    regionsincluded.text = u'WORLD'
+                    territory.append(regionsincluded)
+
+                # Apenas BRL
+                elif brl_price:
+                    price = Element('Price')
+                    supplydetail.append(price)
+
+                    pricetype = Element('PriceType')
+                    pricetype.text = u'01'
+                    price.append(pricetype)
+
+                    priceamount = Element('PriceAmount')
+                    priceamount.text = brl_price
+                    price.append(priceamount)
+
+                    currencycode = Element('CurrencyCode')
+                    currencycode.text = u'BRL'
+                    price.append(currencycode)
+
+                    territory = Element('Territory')
+                    price.append(territory)
+
+                    regionsincluded = Element('RegionsIncluded')
+                    regionsincluded.text = u'WORLD'
+                    territory.append(regionsincluded)
                 if book['price_dollar'] != '0.00':
-                    countriesinclude = Element('CountriesIncluded')
-                    countriesinclude.text = u'BR'
-                    territory.append(countriesinclude)
+                                    countriesinclude = Element('CountriesIncluded')
+                                    countriesinclude.text = u'BR'
+                                    territory.append(countriesinclude)
             else:
                 msg = ("%s SBID Not found." % sbid)
                 logger.info(msg)
