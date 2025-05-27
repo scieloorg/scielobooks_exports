@@ -395,8 +395,13 @@ def json2xml(config, sbidlist, demap):
                                 language = Element('Language')
                                 descriptivedetail.append(language)
 
+                                try:
+                                    role_value = str(int(float(l.get('languagerole', 1)))).zfill(2)
+                                except:
+                                    role_value = '01'
+                                
                                 languagerole = Element('LanguageRole')
-                                languagerole.text = u'01'
+                                languagerole.text = role_value
                                 language.append(languagerole)
 
                                 languagecode = Element('LanguageCode')
